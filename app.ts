@@ -1,5 +1,6 @@
 import express from 'express'
 import {Request,Response} from 'express'
+import cookieParser from "cookie-parser"
 const port = 4500
 import dotenv from 'dotenv'
 dotenv.config()
@@ -9,6 +10,7 @@ import { userRouter } from './routers/routes'
 
 const app = express()
 app.use(express.json())
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 pool.connect().then((client) => {
     console.log('Connected to the database')
